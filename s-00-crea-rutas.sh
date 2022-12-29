@@ -5,7 +5,7 @@
 # @Descripción:
 
 
-dirProyecto=/unam-bda/Proyecto
+dirProyecto=/unam-bda/proyecto
 
 
 echo "Creando carpeta raíz proyecto/"
@@ -17,6 +17,3 @@ mkdir -p ${dirProyecto}/d01
 mkdir -p ${dirProyecto}/d02
 mkdir -p ${dirProyecto}/d03
 mkdir -p ${dirProyecto}/d04
-mkdir -p ${dirProyecto}/d05
-
-
