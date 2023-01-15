@@ -39,8 +39,8 @@ chown -R oracle:oinstall d06/app
 chown -R oracle:oinstall d07/app
 chown -R oracle:oinstall d08/app
 chown -R oracle:oinstall d09/app
-chown -R oracle:oinstall d010/app
-chown -R oracle:oinstall d011/app
+chown -R oracle:oinstall d10/app
+chown -R oracle:oinstall d11/app
 
 chmod -R 750 d01/app
 chmod -R 750 d02/app
@@ -51,8 +51,8 @@ chmod -R 750 d06/app
 chmod -R 750 d07/app
 chmod -R 750 d08/app
 chmod -R 750 d09/app
-chmod -R 750 d010/app
-chmod -R 750 d011/app
+chmod -R 750 d10/app
+chmod -R 750 d11/app
 
 echo "Mostrando directorio de data files"
 ls -l /u01/app/oracle/oradata
