@@ -58,4 +58,4 @@ echo "Mostrando directorio de data files"
 ls -l /u01/app/oracle/oradata
 
 echo "Mostrando directorios para control files y redo logs"
-ls -l /unam-bda/d0*/app/oracle/oradata
+ls -l /unam-bda/proyecto/d0*/app/oracle/oradata

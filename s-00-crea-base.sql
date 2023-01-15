@@ -16,7 +16,6 @@ whenever sqlerror exit rollback;
 create database raluproy
 user sys identified by system2
 user system identified by system2
-user sysbackup identified by system2
 logfile group 1 (
 '/unam-bda/proyecto/d01/app/oracle/oradata/RALUPROY/redo01a.log',
 '/unam-bda/proyecto/d02/app/oracle/oradata/RALUPROY/redo01b.log',
