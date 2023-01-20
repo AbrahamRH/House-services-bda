@@ -9,6 +9,7 @@ segment space management auto;
 
 create tablespace servicio_compress_tbs
 datafile '/unam-bda/proyecto/d09/app/oracle/oradata/RALUPROY/servicio_compress_tbs01.dbf' size 20m
+default row store compress advanced
 extent management local autoallocate
 segment space management auto;
 
