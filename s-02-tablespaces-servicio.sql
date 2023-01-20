@@ -7,16 +7,14 @@ datafile '/unam-bda/proyecto/d09/app/oracle/oradata/RALUPROY/servicio_multiple_t
 extent management local autoallocate
 segment space management auto;
 
-alter system set encryption wallet open identified by "wallet_password";
-create tablespace servicio_encrypt_tbs
-datafile '/unam-bda/proyecto/d09/app/oracle/oradata/RALUPROY/servicio_encrypt_tbs01.dbf' size 10m
+create tablespace servicio_compress_tbs
+datafile '/unam-bda/proyecto/d09/app/oracle/oradata/RALUPROY/servicio_compress_tbs01.dbf' size 20m
 extent management local autoallocate
-segment space management auto
-encryption using 'aes256' encrypt;
+segment space management auto;
 
 
 create temporary tablespace servcio_temp_tbs
-datafile '/unam-bda/proyecto/d09/app/oracle/oradata/RALUPROY/servicio_temp_tbs01.dbf' size 20m
+tempfile '/unam-bda/proyecto/d09/app/oracle/oradata/RALUPROY/servicio_temp_tbs01.dbf' size 20m
 reuse;
 
 
@@ -33,7 +31,8 @@ create user ralu_s01 identified by ralu_s01
 default tablespace servicio_multiple_tbs;
 
 create user ralu_s02 identified by ralu_s02
-default tablespace servicio_encrypt_tbs;
+default tablespace servicio_compress_tbs;
 
 grant create session, create table, create procedure, create sequence to ralu_s01;
 grant create session, create table, create procedure, create sequence to ralu_s02;
+

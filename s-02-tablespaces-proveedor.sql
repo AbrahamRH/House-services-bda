@@ -20,8 +20,7 @@ reuse;
 --Tablespace undo
 create undo tablespace proveedor_undo_tbs
 datafile '/unam-bda/proyecto/d07/app/oracle/oradata/RALUPROY/proveedor_undo_tbs01.bdf' size 20m
-extent management local autoallocate
-segment space management auto;
+extent management local autoallocate;
 
 --Tablespace indices
 create tablespace proveedor_indices_tbs
