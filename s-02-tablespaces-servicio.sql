@@ -7,11 +7,12 @@ datafile '/unam-bda/proyecto/d09/app/oracle/oradata/RALUPROY/servicio_multiple_t
 extent management local autoallocate
 segment space management auto;
 
-
-create encrypt tablespace servicio_encrypt_tbs
+alter system set encryption wallet open identified by "wallet_password";
+create tablespace servicio_encrypt_tbs
 datafile '/unam-bda/proyecto/d09/app/oracle/oradata/RALUPROY/servicio_encrypt_tbs01.dbf' size 10m
 extent management local autoallocate
-segment space management auto;
+segment space management auto
+encryption using 'aes256' encrypt;
 
 
 create temporary tablespace servcio_temp_tbs
