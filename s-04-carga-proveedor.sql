@@ -1,4 +1,6 @@
---Tabla entidad_nacimiento
+connect ralu_p01/ralu
+
+Prompt Tabla entidad_nacimiento
 create sequence entidad_nacimiento_seq
 start with 1
 increment by 1;
@@ -13,7 +15,7 @@ end;
 /
 
 
---Tabla 
+Prompt Tabla nivel_estudio
 create sequence nivel_estudio_seq
 start with 1
 increment by 1;
@@ -27,7 +29,7 @@ begin
 end;
 /
 
---Tabla 
+Prompt Tabla estatus_proveedor
 create sequence estatus_proveedor_seq
 start with 1
 increment by 1;
@@ -41,7 +43,7 @@ begin
 end;
 /
 
---Tabla proveedor
+Prompt Tabla proveedor
 create sequence proveedor_seq
 start with 1
 increment by 1;
@@ -81,7 +83,8 @@ begin
 end;
 /
 
---Tabla doc_proveedor
+connect ralu_p02/ralu
+Prompt Tabla doc_proveedor
 create sequence doc_proveedor_seq
 start with 1
 increment by 1;
