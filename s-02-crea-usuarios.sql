@@ -48,3 +48,19 @@ connect ralu_p01/ralu
 grant references on proveedor to ralu_s01;
 
 connect sys/system2 as sysdba
+
+
+
+Prompt ============================
+Prompt Creando objetos de proveedor
+Prompt ============================
+@s-03-objetos-proveedor.sql
+
+connect sys/system2 as sysdba
+
+Prompt ===========================
+Prompt Creando objetos de servicio
+Prompt ===========================
+@s-03-objetos-serviciosql
+
+connect sys/system2 as sysdba
