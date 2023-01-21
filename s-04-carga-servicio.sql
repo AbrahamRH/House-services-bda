@@ -1,6 +1,8 @@
 
--- Cliente
 
+connect ralu_s01/ralu_s01
+
+-- Cliente
 Prompt Carga de cliente y persona_fisica
 create sequence cliente_seq
 start with 1
@@ -78,6 +80,35 @@ begin
       servicio_estatus_servicio_seq.nextval,
       servicio_proveedor_seq.nextval,
       servicio_cliente_seq.nextval
+    );
+  end loop;
+end;
+/
+
+
+-- Tarjeta cliente
+
+connect ralu_s02/ralu_s02
+
+create sequence tarjeta_cliente_seq
+start with 1
+increment by 1;
+
+create sequence tarjeta_cliente_cliente_seq
+start with 1
+increment by 1;
+
+declare
+begin
+  for i in 1..50 loop
+    insert into tarjeta_cliente(
+      tarjeta_cliente_id,
+      numero_tarjeta,
+      cliente_id
+    ) values (
+      tarjeta_cliente_seq.nextval,
+      sys.dbms_random.value(1000000000000000,9999999999999999),
+      tarjeta_cliente_cliente_seq.nextval
     );
   end loop;
 end;
