@@ -1,9 +1,9 @@
 connect sys/system2 as sysdba
 
 --configura 2 dispatchers para protocolo TCP
-alter system set dispatchers='(dispatchers=2)(protocol=tcp)' scope=memory;
+alter system set dispatchers='(dispatchers=2)(protocol=tcp)' scope=spfile;
 --configura 4 shared servers
-alter system set shared_servers=4 scope=memory;
+alter system set shared_servers=4 scope=spfile;
 
 show parameter dispatchers
 show parameter shared_servers
