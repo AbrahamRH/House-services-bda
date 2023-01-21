@@ -68,14 +68,38 @@ begin
       sys.dbms_random.string('A',20),
       sys.dbms_random.string('A',20),
       empty_blob(),
-      --fecha,
+      (select sysdate from dual),
       sys.dbms_random.string('A',150),
       select dbms_random.value(1000000000,9999999999),
       select dbms_random.value(1000000000,9999999999),
-      --fecha_status,
+      (select sysdate from dual),
       proveedor_entidad_nacimiento_seq.NextVal,
       proveedor_nivel_estudio_seq.NextVal,
       proveedor_estatus_proveedor_seq.NextVal
+      );
+  end loop;
+end;
+/
+
+--Tabla doc_proveedor
+create sequence doc_proveedor_seq
+start with 1
+increment by 1;
+
+create sequence doc_proveedor_proveedor_seq
+start with 1
+increment by 1;
+
+begin
+  for i in 1..50 loop
+    insert into DOC_PROVEEDOR(DOC_PROVEEDOR_ID,IDENTIFICACION,COMPROBANTE_DOMICILIO,
+    CLABE,BANCO,PROVEEDOR_ID) values (
+      doc_proveedor_seq.NextVal,
+      empty_blob(),
+      empty_blob(),
+      sys.dbms_random.string('A',18),
+      sys.dbms_random.string('A',30),
+      doc_proveedor_proveedor_seq.NextVal
       );
   end loop;
 end;
