@@ -39,3 +39,10 @@ grant create session, create table, create procedure, create sequence to ralu_s0
 
 alter user ralu_s01 quota unlimited on servicio_indexes_tbs;
 alter user ralu_s02 quota unlimited on servicio_indexes_tbs;
+
+
+connect ralu_p01/ralu
+grant references on proveedor to ralu_s01;
+
+
+connect sys/system2 as sysdba
