@@ -28,17 +28,3 @@ datafile '/unam-bda/proyecto/d07/app/oracle/oradata/RALUPROY/proveedor_indices_t
 extent management local autoallocate
 segment space management auto;
 
-
-create user ralu_p01 identified by ralu
-default tablespace proveedor_multiple_tbs
-quota unlimited on proveedor_multiple_tbs;
-
-create user ralu_p02 identified by ralu
-default tablespace proveedor_big_tbs
-quota unlimited on proveedor_big_tbs;
-
-grant create session, create table, create procedure, create sequence to ralu_p01;
-grant create session, create table, create procedure, create sequence to ralu_p02;
-
-alter user ralu_p01 quota unlimited on proveedor_indices_tbs;
-alter user ralu_p02 quota unlimited on proveedor_indices_tbs;

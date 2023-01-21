@@ -181,7 +181,7 @@ CREATE TABLE SERVICIO(
     SERVICIO_ID              NUMBER(30, 0)     NOT NULL,
     FECHA_SERVICIO           DATE              NOT NULL,
     DESCRIPCION              VARCHAR2(1000)    NOT NULL,
-    DESCRIPCION_DETALLADA    RAW(30)           NOT NULL,
+    DESCRIPCION_DETALLADA    BLOB              NOT NULL,
     FECHA_STATUS             DATE              NOT NULL,
     ESTATUS_SERVICIO_ID      VARCHAR2(30)      NOT NULL,
     PROVEEDOR_ID             NUMBER(20, 0)     NOT NULL,
