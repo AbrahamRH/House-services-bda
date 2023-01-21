@@ -37,3 +37,5 @@ default tablespace servicio_compress_tbs;
 grant create session, create table, create procedure, create sequence to ralu_s01;
 grant create session, create table, create procedure, create sequence to ralu_s02;
 
+alter user ralu_s01 quota unlimited on servicio_indexes_tbs;
+alter user ralu_s02 quota unlimited on servicio_indexes_tbs;
