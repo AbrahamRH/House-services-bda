@@ -33,10 +33,12 @@ alter user ralu_p02 quota unlimited on proveedor_indices_tbs;
 -- Servicio
 
 create user ralu_s01 identified by ralu_s01 
-default tablespace servicio_multiple_tbs;
+default tablespace servicio_multiple_tbs
+quota unlimited on servicio_multiple_tbs;
 
 create user ralu_s02 identified by ralu_s02
-default tablespace servicio_compress_tbs;
+default tablespace servicio_compress_tbs
+quota unlimited on servicio_compress_tbs;
 
 grant create session, create table, create procedure, create sequence to ralu_s01;
 grant create session, create table, create procedure, create sequence to ralu_s02;
