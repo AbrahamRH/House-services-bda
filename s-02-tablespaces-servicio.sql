@@ -28,21 +28,3 @@ datafile '/unam-bda/proyecto/d09/app/oracle/oradata/RALUPROY/servicio_indexes_tb
 extent management local autoallocate
 segment space management auto;
 
-create user ralu_s01 identified by ralu_s01 
-default tablespace servicio_multiple_tbs;
-
-create user ralu_s02 identified by ralu_s02
-default tablespace servicio_compress_tbs;
-
-grant create session, create table, create procedure, create sequence to ralu_s01;
-grant create session, create table, create procedure, create sequence to ralu_s02;
-
-alter user ralu_s01 quota unlimited on servicio_indexes_tbs;
-alter user ralu_s02 quota unlimited on servicio_indexes_tbs;
-
-
-connect ralu_p01/ralu
-grant references on proveedor to ralu_s01;
-
-
-connect sys/system2 as sysdba
