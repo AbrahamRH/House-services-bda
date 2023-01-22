@@ -1,17 +1,79 @@
 
+connect ralu_p01/ralu
+begin
+  for i in 1..2000 loop
+    insert into ENTIDAD_NACIMIENTO(ENTIDAD_NACIMIENTO_ID,ENTIDAD) values (
+      entidad_nacimiento_seq.NextVal,sys.dbms_random.string('A',20)
+      );
+  end loop;
+end;
+/
+begin
+  for i in 1..2000 loop
+    insert into NIVEL_ESTUDIO(NIVEL_ESTUDIO_ID,NIVEL_ESTUDIO) values (
+      nivel_estudio_seq.NextVal,sys.dbms_random.string('A',80)
+      );
+  end loop;
+end;
+/
+begin
+  for i in 1..2000 loop
+    insert into ESTATUS_PROVEEDOR(ESTATUS_PROVEEDOR_ID,DESCRIPCION) values (
+      estatus_proveedor_seq.NextVal,sys.dbms_random.string('A',15)
+      );
+  end loop;
+end;
+/
+begin
+  for i in 1..2000 loop
+    insert into PROVEEDOR(PROVEEDOR_ID,NOMBRE,AP_PATERNO,AP_MATERNO,FOTO,
+    FECHA_NACIMIENTO,DIRECCION,TELEFONO_CASA,TELEFONO_MOVIL,FECHA_STATUS,
+    ENTIDAD_NACIMIENTO_ID,NIVEL_ESTUDIO_ID,ESTATUS_PROVEEDOR_ID) values (
+      proveedor_seq.NextVal,
+      sys.dbms_random.string('A',20),
+      sys.dbms_random.string('A',20),
+      sys.dbms_random.string('A',20),
+      empty_blob(),
+      (select sysdate from dual),
+      sys.dbms_random.string('A',150),
+      sys.dbms_random.value(1000000000,9999999999),
+      sys.dbms_random.value(1000000000,9999999999),
+      (select sysdate from dual),
+      proveedor_entidad_nacimiento_seq.NextVal,
+      proveedor_nivel_estudio_seq.NextVal,
+      proveedor_estatus_proveedor_seq.NextVal
+      );
+  end loop;
+end;
+/
+
+commit;
+connect ralu_p02/ralu
+begin
+  for i in 1..2000 loop
+    insert into DOC_PROVEEDOR(
+      DOC_PROVEEDOR_ID,
+      IDENTIFICACION,
+      COMPROBANTE_DOMICILIO,
+      CLABE,
+      BANCO,
+      PROVEEDOR_ID) values (
+      doc_proveedor_seq.NextVal,
+      empty_blob(),
+      empty_blob(),
+      sys.dbms_random.value(000000000000000000,999999999999999999),
+      sys.dbms_random.string('A',30),
+      doc_proveedor_proveedor_seq.NextVal
+      );
+  end loop;
+end;
+/
+commit;
+
+-- Servicio
+
 connect ralu_s01/ralu_s01
 
--- Cliente
-Prompt ================
-Prompt Carga de cliente 
-Prompt ================
-
-create sequence cliente_seq
-start with 1
-increment by 1;
-
-
-alter table cliente nologging;
 declare
 begin 
   for i in 1..2000 loop
@@ -37,17 +99,6 @@ begin
   end loop;
 end;
 /
-alter table cliente logging;
-
-Prompt =======================
-Prompt Carga de persona fisica
-Prompt =======================
-
-create sequence persona_seq
-start with 1
-increment by 1;
-
-alter table persona_fisica nologging;
 declare
 begin 
   for i in 1..2000 loop
@@ -63,17 +114,6 @@ begin
   end loop;
 end;
 /
-alter table persona_fisica logging;
-
-Prompt =========================
-Prompt Carga de estatus_servicio
-Prompt =========================
-
-create sequence estatus_servicio_seq
-start with 1
-increment by 1;
-
-alter table estatus_servicio nologging;
 declare
 begin 
   for i in 1..2000 loop
@@ -87,31 +127,6 @@ begin
   end loop;
 end;
 /
-alter table estatus_servicio logging;
-
--- Servicio
-
-Prompt =================
-Prompt Carga de servicio
-Prompt =================
-
-create sequence servicio_seq
-start with 1
-increment by 1;
-
-create sequence servicio_proveedor_seq
-start with 1
-increment by 1;
-
-create sequence servicio_cliente_seq
-start with 1
-increment by 1;
-
-create sequence servicio_estatus_servicio_seq
-start with 1
-increment by 1;
-
-alter table servicio nologging;
 declare
 begin 
   for i in 1..2000 loop
@@ -131,26 +146,9 @@ begin
   end loop;
 end;
 /
-alter table servicio logging;
-
-
--- Tarjeta cliente
-
-Prompt ================
-Prompt Carga de cliente
-Prompt ================
+commit;
 
 connect ralu_s02/ralu_s02
-
-create sequence tarjeta_cliente_seq
-start with 1
-increment by 1;
-
-create sequence tarjeta_cliente_cliente_seq
-start with 1
-increment by 1;
-
-alter table tarjeta_cliente nologging;
 declare
 begin
   for i in 1..2000 loop
@@ -166,6 +164,4 @@ begin
   end loop;
 end;
 /
-alter table tarjeta_cliente logging;
-
 commit;
